@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script>
+    /* Decide antes del primer pintado si hay película en bucle o portada estática
+       (solo con «reducir movimiento» activado en el sistema). Igual que en main.js. */
+    (function (d) {
+      var r = d.documentElement; r.className = r.className.replace("no-js", "js");
+      var off = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!off) { r.className += " film"; }
+      /* red de seguridad: si main.js no arranca en 5 s, portada estática */
+      setTimeout(function () { if (!window.__AE_BOOTED__) { r.className = r.className.replace(/\bfilm\b/g, ""); } }, 5000);
+    })(document);
+  </script>
+  <title>AETHERIA Parfums · Nocturne d'Or, extrait de parfum</title>
+  <meta name="description" content="AETHERIA, haute parfumerie botanique: cuatro perfumes de autor destilados en Grasse y compuestos en Madrid. Nocturne d'Or, extrait de parfum al 32 %. Proyecto conceptual de diseño.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0B0B0E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AETHERIA Parfums · La memoria líquida del tiempo">
+  <meta property="og:description" content="Nocturne d'Or, extrait de parfum al 32 %. Salida, corazón y fondo en veinticuatro horas.">
+  <!-- DEPLOY STEP: sustituir por la URL absoluta publicada -->
+  <meta property="og:image" content="assets/img/og-aetheria.webp">
+  <meta property="og:url" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg?v=20261106" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/img/hero-poster.webp?v=20261106" fetchpriority="high" media="(prefers-reduced-motion: no-preference)">
+  <link rel="preload" as="image" href="assets/img/hero-mobile.webp?v=20261106" fetchpriority="high" media="(prefers-reduced-motion: reduce) and (orientation: portrait)">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/CormorantGaramond-400-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/Manrope-400-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=20261106">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261106b">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+  <!-- Capa de ambiente fija: grano y resplandor muy lento -->
+  <div class="ambient" aria-hidden="true"></div>
+
+  <header class="nav" data-nav>
+    <div class="nav-bar">
+      <a class="brand" href="#inicio" aria-label="AETHERIA, inicio">
+        <svg class="brand-mark" viewBox="0 0 24 32" aria-hidden="true"><circle cx="12" cy="7" r="5.2"/><rect x="9.6" y="12.4" width="4.8" height="2.4" rx=".6"/><path d="M5 15.4h14v13.2a1.8 1.8 0 0 1-1.8 1.8H6.8A1.8 1.8 0 0 1 5 28.6z"/><path class="flutes" d="M8 17v11M10.3 17v11M12.6 17v11M14.9 17v11M17 17v11"/></svg>
+        <span class="brand-word">AETHERIA</span>
+      </a>
+      <nav class="nav-links" aria-label="Principal" data-i18n-attr="aria-label:nav.label">
+        <a href="#coleccion" data-i18n="nav.coleccion">Colección</a>
+        <a href="#atelier" data-i18n="nav.atelier">El Atelier</a>
+        <a href="#oraculo" data-i18n="nav.oraculo">El Oráculo</a>
+        <a href="#diario" data-i18n="nav.diario">Diario</a>
+      </nav>
+      <div class="nav-tools">
+        <div class="lang" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.label">
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="cart-btn" data-open-cart aria-label="Abrir tu pedido, 0 artículos" data-i18n-attr="aria-label:cart.open0">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+          <span class="cart-label" data-i18n="cart.short">Pedido</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </button>
+        <button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu" data-menu-btn>
+          <span class="sr-only" data-i18n="nav.menu">Menú</span>
+          <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+    <div class="menu-panel" id="menu" data-menu hidden>
+      <a href="#coleccion" data-i18n="nav.coleccion">Colección</a>
+      <a href="#atelier" data-i18n="nav.atelier">El Atelier</a>
+      <a href="#oraculo" data-i18n="nav.oraculo">El Oráculo</a>
+      <a href="#diario" data-i18n="nav.diario">Diario</a>
+      <a href="#preguntas" data-i18n="nav.faq">Preguntas frecuentes</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ============ 1. PORTADA: película en bucle que avanza sola, fase a fase ============ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-track" data-hero>
+        <div class="hero-stage">
+          <div class="hero-poster" data-poster aria-hidden="true"></div>
+          <video class="hero-video" data-video muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <div class="hero-scrim" aria-hidden="true"></div>
+
+          <div class="bands">
+            <div class="band band-1" data-band="0,0.12" data-fx="rise">
+              <p class="band-kicker mono" data-i18n="hero.b1.kicker">AETHERIA · Haute Parfumerie Botanique &amp; Alchimie</p>
+              <h1 class="band-title" id="hero-title" data-split data-i18n="hero.b1.title">La memoria <em>líquida</em> del tiempo.</h1>
+              <p class="band-sub" data-i18n="hero.b1.sub">Perfumes de autor destilados en Grasse y compuestos en Madrid.</p>
+            </div>
+            <div class="band band-2" data-band="0.15,0.31" data-fx="snap">
+              <h2 class="band-title" data-split data-i18n="hero.b2.title"><em>Nocturne d'Or</em></h2>
+              <p class="band-sub" data-i18n="hero.b2.sub">Extrait de parfum al 32 %. Treinta y seis canales de vidrio ahumado sobre una base de quince milímetros.</p>
+            </div>
+            <div class="band band-3" data-band="0.36,0.51" data-fx="lift">
+              <p class="band-kicker mono" data-i18n="hero.b3.kicker">Salida · 0 a 15 min</p>
+              <h2 class="band-title" data-split data-i18n="hero.b3.title">Una luz <em>amarga</em> que dura un cuarto de hora.</h2>
+              <p class="band-notes" data-i18n="hero.b3.notes">Bergamota negra de Calabria · Cardamomo ahumado · Pimienta rosa</p>
+            </div>
+            <div class="band band-4" data-band="0.57,0.72" data-fx="drift">
+              <p class="band-kicker mono" data-i18n="hero.b4.kicker">Corazón · 15 min a 4 h</p>
+              <h2 class="band-title" data-split data-i18n="hero.b4.title">Después, la rosa entra en el <em>humo</em>.</h2>
+              <p class="band-notes" data-i18n="hero.b4.notes">Rosa de Damasco absoluta · Incienso de Omán · Raíz de lirio</p>
+            </div>
+            <div class="band band-5" data-band="0.76,0.89" data-fx="focus">
+              <p class="band-kicker mono" data-i18n="hero.b5.kicker">Fondo · de 4 h al día siguiente</p>
+              <h2 class="band-title" data-split data-i18n="hero.b5.title">Lo que queda en la bufanda a la mañana <em>siguiente</em>.</h2>
+              <p class="band-notes" data-i18n="hero.b5.notes">Oud de Assam · Ámbar gris botánico · Vainilla negra de Madagascar · Cuero envejecido</p>
+            </div>
+            <div class="band band-6" data-band="0.91,1" data-fx="settle">
+              <h2 class="band-title" data-split data-i18n="hero.b6.title"><em>Nocturne d'Or</em></h2>
+              <p class="band-sub" data-i18n="hero.b6.sub">Extrait de parfum · 100 ml · 265 €</p>
+              <div class="band-cta">
+                <button type="button" class="btn btn-gold" data-add="nocturne:100" data-i18n="cta.add">Añadir al carrito</button>
+                <button type="button" class="btn-link" data-add="nocturne:5" data-i18n="hero.b6.sample">o pruébalo antes: muestra de 5 ml · 18 €</button>
+              </div>
+              <p class="band-proof" data-i18n="hero.b6.proof">Cada pedido incluye 2 ml para probarlo antes de abrir el frasco.</p>
+            </div>
+          </div>
+
+          <!-- Elemento distintivo: el reloj de evaporación -->
+          <div class="clock" data-clock aria-hidden="true">
+            <div class="clock-rail" data-clock-rail></div>
+            <div class="clock-marker" data-clock-marker><span class="clock-read mono" data-clock-read>T+00:00</span></div>
+            <ol class="clock-labels mono">
+              <li class="t" style="--at:0">00:00</li>
+              <li class="n" style="--at:.167" data-i18n="tier.salida">Salida</li>
+              <li class="t" style="--at:.333">00:15</li>
+              <li class="n" style="--at:.5" data-i18n="tier.corazon">Corazón</li>
+              <li class="t" style="--at:.666">04:00</li>
+              <li class="n" style="--at:.833" data-i18n="tier.fondo">Fondo</li>
+              <li class="t" style="--at:1">24:00</li>
+            </ol>
+          </div>
+
+          <!-- fundido a negro entre vuelta y vuelta -->
+          <div class="hero-fade" data-hero-fade aria-hidden="true"></div>
+
+          <div class="hero-loader" data-loader aria-hidden="true">
+            <svg class="ring" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/></svg>
+            <span class="mono" data-i18n="hero.loading">Cargando película</span>
+          </div>
+          <div class="scroll-cue mono" aria-hidden="true"><span data-i18n="hero.scroll">Desliza</span><i></i></div>
+          <button type="button" class="hero-pause" data-hero-pause aria-pressed="false">
+            <span class="sr-only" data-i18n="hero.pause">Pausar la película</span>
+            <svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><rect x="2.2" y="1.5" width="2.5" height="9" rx=".4"/><rect x="7.3" y="1.5" width="2.5" height="9" rx=".4"/></svg>
+            <svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.2 1.6v8.8L10.4 6z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Portada estática (solo con «reducir movimiento» activado) -->
+      <div class="hero-static">
+        <picture>
+          <source media="(orientation: portrait)" srcset="assets/img/hero-mobile.webp?v=20261106">
+          <img src="assets/img/hero-ending.webp?v=20261106" alt="Frasco Nocturne d'Or de vidrio ahumado estriado con el tapón esférico de mármol negro flotando sobre el cuello, sobre un pedestal de basalto en agua negra" width="1600" height="900" fetchpriority="high" data-i18n-attr="alt:hero.static.alt">
+        </picture>
+        <div class="hero-static-copy">
+          <p class="band-kicker mono" data-i18n="hero.static.kicker">AETHERIA · Grasse · Madrid</p>
+          <p class="hero-static-title" data-i18n="hero.b1.title">La memoria <em>líquida</em> del tiempo.</p>
+          <p class="band-sub" data-i18n="hero.static.sub">Nocturne d'Or, extrait de parfum al 32 %. Salida, corazón y fondo en veinticuatro horas.</p>
+          <a class="btn btn-gold" href="#ficha" data-i18n="hero.static.cta">Descubrir Nocturne d'Or</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. TAGLINE (revelado palabra a palabra) ============ -->
+    <section class="tagline" aria-label="Manifiesto" data-i18n-attr="aria-label:tag.label">
+      <p class="tagline-text" data-words data-i18n="tag.text">Cada perfume AETHERIA está escrito en tres tiempos: los primeros minutos, las horas del día y lo que queda en la ropa a la mañana siguiente.</p>
+    </section>
+
+    <!-- ============ 3. FICHA TÉCNICA (papel algodón) ============ -->
+    <section class="ficha paper" id="ficha" aria-labelledby="ficha-title">
+      <div class="wrap ficha-grid">
+        <figure class="ficha-print reveal">
+          <img src="assets/img/nocturne-dor.webp?v=20261106" alt="Nocturne d'Or sobre su pedestal de basalto: frasco de vidrio ahumado con 36 canales, líquido ámbar y tapón de mármol negro con vetas doradas" width="1200" height="1500" loading="lazy" decoding="async" data-i18n-attr="alt:ficha.alt">
+          <figcaption class="mono" data-i18n="ficha.caption">Render en Blender · frasco Ø60 × 97 mm</figcaption>
+        </figure>
+        <div class="ficha-body">
+          <p class="kicker mono reveal" data-i18n="ficha.kicker">Ficha n.º 01 · Lote 0417 · Grasse</p>
+          <h2 class="h2 reveal" id="ficha-title"><span data-i18n="ficha.title">Nocturne <em>d'Or</em></span></h2>
+          <p class="lead reveal" data-i18n="ficha.lead">Un extrait oscuro y dorado para la noche: abre con cítricos amargos, se vuelve rosa e incienso y termina en oud, vainilla negra y cuero.</p>
+          <dl class="specs reveal">
+            <div><dt data-i18n="ficha.s.conc">Concentración</dt><dd data-i18n="ficha.s.concv">Extrait de parfum, 32 % de aceites</dd></div>
+            <div><dt data-i18n="ficha.s.fam">Familia</dt><dd data-i18n="ficha.s.famv">Oriental especiada</dd></div>
+            <div><dt data-i18n="ficha.s.wear">En la piel</dt><dd data-i18n="ficha.s.wearv">10 a 12 horas, estela alta las primeras cuatro</dd></div>
+            <div><dt data-i18n="ficha.s.bottle">Frasco</dt><dd data-i18n="ficha.s.bottlev">Vidrio ahumado de 36 canales, base de 15 mm, collarín de latón cepillado y tapón de mármol Nero Marquina</dd></div>
+          </dl>
+          <form class="buy reveal" data-buy="nocturne">
+            <fieldset class="sizes">
+              <legend class="sr-only" data-i18n="ficha.size">Tamaño</legend>
+              <label class="size"><input type="radio" name="size-nocturne" value="100" checked><span><b data-i18n="size.100">100 ml</b><i class="mono">265 €</i></span></label>
+              <label class="size"><input type="radio" name="size-nocturne" value="5"><span><b data-i18n="size.5">Muestra 5 ml</b><i class="mono">18 €</i></span></label>
+            </fieldset>
+            <button type="submit" class="btn btn-ink" data-i18n="cta.add">Añadir al carrito</button>
+            <p class="proof" data-i18n="ficha.proof">Incluye una muestra de 2 ml: pruébala antes de desprecintar el frasco. Si no es para ti, devuelve el frasco precintado en 30 días.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- reloj de evaporación, versión horizontal -->
+      <div class="wrap">
+        <div class="timeline reveal" aria-label="Pirámide olfativa por tiempo de evaporación" data-i18n-attr="aria-label:tl.label">
+          <div class="tl-scale mono" aria-hidden="true"><span>00:00</span><span>00:15</span><span>04:00</span><span>24:00</span></div>
+          <div class="tl-rail" aria-hidden="true"><i class="t1"></i><i class="t2"></i><i class="t3"></i></div>
+          <ol class="tl-tiers">
+            <li class="tl-tier">
+              <h3 class="tl-name"><span data-i18n="tier.salida">Salida</span> <small class="mono" data-i18n="tier.salida.t">0 a 15 min</small></h3>
+              <ul class="tl-notes"><li data-i18n="n.bergamota">Bergamota negra de Calabria</li><li data-i18n="n.cardamomo">Cardamomo ahumado</li><li data-i18n="n.pimienta">Pimienta rosa</li></ul>
+            </li>
+            <li class="tl-tier">
+              <h3 class="tl-name"><span data-i18n="tier.corazon">Corazón</span> <small class="mono" data-i18n="tier.corazon.t">15 min a 4 h</small></h3>
+              <ul class="tl-notes"><li data-i18n="n.rosa">Rosa de Damasco absoluta</li><li data-i18n="n.incienso">Incienso de Omán (olíbano)</li><li data-i18n="n.lirio">Raíz de lirio (orris)</li></ul>
+            </li>
+            <li class="tl-tier">
+              <h3 class="tl-name"><span data-i18n="tier.fondo">Fondo</span> <small class="mono" data-i18n="tier.fondo.t">de 4 h al día siguiente</small></h3>
+              <ul class="tl-notes"><li data-i18n="n.oud">Oud de Assam</li><li data-i18n="n.ambar">Ámbar gris botánico</li><li data-i18n="n.vainilla">Vainilla negra de Madagascar</li><li data-i18n="n.cuero">Cuero envejecido</li></ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. VISOR 3D: momento interactivo ============ -->
+    <section class="viewer" id="frasco" aria-labelledby="viewer-title" data-viewer>
+      <div class="viewer-canvas" data-viewer-canvas>
+        <img class="viewer-fallback" data-viewer-fallback src="assets/img/nocturne-dor.webp?v=20261106" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+      </div>
+      <div class="wrap viewer-ui">
+        <div class="viewer-copy">
+          <h2 class="h2 reveal" id="viewer-title" data-i18n="viewer.title">Mantén pulsado y <em>ábrelo</em>.</h2>
+          <p class="reveal" data-i18n="viewer.text">Gira el frasco arrastrando hacia los lados. Elige uno de los cuatro elementos y mantén pulsado el botón: el tapón de mármol se separa y aparecen sus notas por orden de evaporación.</p>
+          <ol class="viewer-tiers" data-viewer-tiers aria-live="polite">
+            <li data-tier="salida"><span class="mono" data-i18n="tier.salida">Salida</span><p data-tier-notes>Bergamota negra de Calabria · Cardamomo ahumado · Pimienta rosa</p></li>
+            <li data-tier="corazon"><span class="mono" data-i18n="tier.corazon">Corazón</span><p data-tier-notes>Rosa de Damasco absoluta · Incienso de Omán · Raíz de lirio</p></li>
+            <li data-tier="fondo"><span class="mono" data-i18n="tier.fondo">Fondo</span><p data-tier-notes>Oud de Assam · Ámbar gris botánico · Vainilla negra de Madagascar · Cuero envejecido</p></li>
+          </ol>
+        </div>
+        <div class="viewer-controls">
+          <div class="swatches" role="radiogroup" aria-label="Elige un perfume" data-i18n-attr="aria-label:viewer.choose">
+            <button type="button" role="radio" aria-checked="true" class="swatch" data-variant="nocturne" style="--liq:#C87A28;--stone:#141210"><i aria-hidden="true"></i><span>Nocturne d'Or</span></button>
+            <button type="button" role="radio" aria-checked="false" class="swatch" data-variant="sylva" style="--liq:#2E4A3B;--stone:#1d4a33"><i aria-hidden="true"></i><span>Sylva Obscura</span></button>
+            <button type="button" role="radio" aria-checked="false" class="swatch" data-variant="sel" style="--liq:#B8C9D4;--stone:#d9d7d1"><i aria-hidden="true"></i><span>Sel d'Argent</span></button>
+            <button type="button" role="radio" aria-checked="false" class="swatch" data-variant="fumee" style="--liq:#7B2D1F;--stone:#3a120b"><i aria-hidden="true"></i><span>Fumée Céleste</span></button>
+          </div>
+          <button type="button" class="hold" data-hold aria-describedby="hold-hint">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="hold-track" cx="32" cy="32" r="29"/><circle class="hold-fill" cx="32" cy="32" r="29" pathLength="100" style="stroke-dashoffset:calc(100 - var(--hold,0) * 100)"/></svg>
+            <span class="hold-label" data-hold-label data-i18n="viewer.hold">Mantén pulsado para abrir</span>
+          </button>
+          <p class="hold-hint mono" id="hold-hint" data-i18n="viewer.hint">También con la barra espaciadora</p>
+          <button type="button" class="btn btn-gold viewer-add" data-viewer-add data-add="nocturne:100" data-i18n="viewer.add">Añadir Nocturne d'Or · 265 €</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. COLECCIÓN con filtros ============ -->
+    <section class="coleccion" id="coleccion" aria-labelledby="col-title">
+      <div class="wrap">
+        <div class="col-head">
+          <div>
+            <h2 class="h2 reveal" id="col-title">Les Éléments <em>Noirs</em></h2>
+            <p class="reveal" data-i18n="col.sub">Cuatro perfumes, cuatro materias: oro, bosque, sal y humo. Filtra por familia o por estación.</p>
+          </div>
+          <form class="filters reveal" data-filters aria-label="Filtrar la colección" data-i18n-attr="aria-label:col.filter">
+            <fieldset>
+              <legend class="mono" data-i18n="col.family">Familia</legend>
+              <label class="chip"><input type="radio" name="family" value="all" checked><span data-i18n="col.all">Todas</span></label>
+              <label class="chip"><input type="radio" name="family" value="amaderada"><span data-i18n="fam.amaderada">Amaderada</span></label>
+              <label class="chip"><input type="radio" name="family" value="oriental"><span data-i18n="fam.oriental">Oriental</span></label>
+              <label class="chip"><input type="radio" name="family" value="mineral"><span data-i18n="fam.mineral">Mineral</span></label>
+              <label class="chip"><input type="radio" name="family" value="especiada"><span data-i18n="fam.especiada">Especiada</span></label>
+            </fieldset>
+            <fieldset>
+              <legend class="mono" data-i18n="col.season">Estación</legend>
+              <label class="chip"><input type="radio" name="season" value="all" checked><span data-i18n="col.allf">Todas</span></label>
+              <label class="chip"><input type="radio" name="season" value="primavera"><span data-i18n="sea.primavera">Primavera</span></label>
+              <label class="chip"><input type="radio" name="season" value="verano"><span data-i18n="sea.verano">Verano</span></label>
+              <label class="chip"><input type="radio" name="season" value="otono"><span data-i18n="sea.otono">Otoño</span></label>
+              <label class="chip"><input type="radio" name="season" value="invierno"><span data-i18n="sea.invierno">Invierno</span></label>
+            </fieldset>
+          </form>
+        </div>
+        <p class="col-count mono" data-col-count aria-live="polite">4 perfumes</p>
+
+        <div class="grid" data-grid>
+          <article class="card reveal" data-id="nocturne" data-family="oriental especiada" data-seasons="otono invierno">
+            <button type="button" class="card-media" data-sheet="nocturne" aria-label="Ver la ficha de Nocturne d'Or" data-i18n-attr="aria-label:card.view.nocturne">
+              <img src="assets/img/nocturne-dor.webp?v=20261106" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            </button>
+            <div class="card-body">
+              <h3 class="card-name"><em>Nocturne d'Or</em></h3>
+              <p class="card-conc mono" data-i18n="p.nocturne.conc">Extrait de parfum · 32 %</p>
+              <p class="card-notes" data-i18n="p.nocturne.notes">Bergamota negra, incienso de Omán, oud de Assam</p>
+              <div class="card-foot">
+                <span class="price mono">265 €</span>
+                <button type="button" class="btn-line" data-sheet="nocturne" data-i18n="card.sheet">Ficha</button>
+                <button type="button" class="btn btn-gold btn-s" data-add="nocturne:100" data-i18n="card.add">Añadir</button>
+              </div>
+            </div>
+          </article>
+          <article class="card reveal" data-id="sylva" data-family="amaderada" data-seasons="otono primavera">
+            <button type="button" class="card-media" data-sheet="sylva" aria-label="Ver la ficha de Sylva Obscura" data-i18n-attr="aria-label:card.view.sylva">
+              <img src="assets/img/sylva-obscura.webp?v=20261106" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            </button>
+            <div class="card-body">
+              <h3 class="card-name"><em>Sylva Obscura</em></h3>
+              <p class="card-conc mono" data-i18n="p.sylva.conc">Eau de parfum intense · 24 %</p>
+              <p class="card-notes" data-i18n="p.sylva.notes">Ciprés húmedo, vetiver de Haití, tierra mojada</p>
+              <div class="card-foot">
+                <span class="price mono">210 €</span>
+                <button type="button" class="btn-line" data-sheet="sylva" data-i18n="card.sheet">Ficha</button>
+                <button type="button" class="btn btn-gold btn-s" data-add="sylva:100" data-i18n="card.add">Añadir</button>
+              </div>
+            </div>
+          </article>
+          <article class="card reveal" data-id="sel" data-family="mineral" data-seasons="primavera verano">
+            <button type="button" class="card-media" data-sheet="sel" aria-label="Ver la ficha de Sel d'Argent" data-i18n-attr="aria-label:card.view.sel">
+              <img src="assets/img/sel-dargent.webp?v=20261106" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            </button>
+            <div class="card-body">
+              <h3 class="card-name"><em>Sel d'Argent</em></h3>
+              <p class="card-conc mono" data-i18n="p.sel.conc">Eau de parfum · 20 %</p>
+              <p class="card-notes" data-i18n="p.sel.notes">Sal marina del Atlántico, algas tostadas, cedro blanco</p>
+              <div class="card-foot">
+                <span class="price mono">195 €</span>
+                <button type="button" class="btn-line" data-sheet="sel" data-i18n="card.sheet">Ficha</button>
+                <button type="button" class="btn btn-gold btn-s" data-add="sel:100" data-i18n="card.add">Añadir</button>
+              </div>
+            </div>
+          </article>
+          <article class="card reveal" data-id="fumee" data-family="especiada amaderada" data-seasons="invierno otono">
+            <button type="button" class="card-media" data-sheet="fumee" aria-label="Ver la ficha de Fumée Céleste" data-i18n-attr="aria-label:card.view.fumee">
+              <img src="assets/img/fumee-celeste.webp?v=20261106" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            </button>
+            <div class="card-body">
+              <h3 class="card-name"><em>Fumée Céleste</em></h3>
+              <p class="card-conc mono" data-i18n="p.fumee.conc">Extrait de parfum · 30 %</p>
+              <p class="card-notes" data-i18n="p.fumee.notes">Tabaco rubio, mirra roja, sándalo de Mysore</p>
+              <div class="card-foot">
+                <span class="price mono">250 €</span>
+                <button type="button" class="btn-line" data-sheet="fumee" data-i18n="card.sheet">Ficha</button>
+                <button type="button" class="btn btn-gold btn-s" data-add="fumee:100" data-i18n="card.add">Añadir</button>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-empty" data-col-empty hidden>
+          <p data-col-empty-text>Ningún perfume de la colección combina esa familia y esa estación.</p>
+          <div class="col-empty-actions">
+            <button type="button" class="btn-line" data-filters-reset data-i18n="col.reset">Quitar filtros</button>
+            <a class="btn-line" href="#oraculo" data-i18n="col.oracle">Pregunta al Oráculo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. EL ORÁCULO (papel) ============ -->
+    <section class="oraculo paper" id="oraculo" aria-labelledby="or-title">
+      <div class="wrap oraculo-wrap">
+        <header class="or-head">
+          <p class="kicker mono reveal" data-i18n="or.kicker">El Oráculo · test olfativo · 4 preguntas</p>
+          <h2 class="h2 reveal" id="or-title" data-i18n="or.title">Cuatro preguntas para encontrar <em>tu</em> elemento.</h2>
+          <p class="reveal" data-i18n="or.text">No hay respuestas correctas. Elige lo primero que sientas; al final te diremos qué perfume encaja contigo y por qué.</p>
+        </header>
+        <form class="or-form" data-oracle novalidate>
+          <div class="or-progress mono" aria-hidden="true"><span data-or-step>1</span> / 4<i data-or-bar></i></div>
+          <div class="or-steps" data-or-steps>
+            <!-- las preguntas se generan desde data.js; sin JavaScript se muestra este aviso -->
+            <p class="or-nojs" data-i18n="or.nojs">Activa JavaScript para hacer el test del Oráculo.</p>
+          </div>
+          <div class="or-nav">
+            <button type="button" class="btn-line" data-or-back disabled data-i18n="or.back">Anterior</button>
+            <p class="or-error mono" data-or-error role="alert"></p>
+          </div>
+        </form>
+        <div class="or-result" data-or-result hidden tabindex="-1"></div>
+      </div>
+    </section>
+
+    <!-- ============ 7. DISCOVERY SET ============ -->
+    <section class="discovery" id="discovery" aria-labelledby="ds-title">
+      <div class="wrap ds-grid">
+        <div class="ds-copy">
+          <p class="kicker mono reveal" data-i18n="ds.kicker">Discovery Set · 4 × 5 ml</p>
+          <h2 class="h2 reveal" id="ds-title" data-i18n="ds.title">Cuatro viales, cuatro <em>días</em>.</h2>
+          <p class="reveal" data-i18n="ds.text">Un vial de 5 ml de cada elemento en un cofre de cartón negro con interior de papel algodón. Incluye un bono de 65 € para descontar en tu primer frasco de 100 ml: si te quedas con uno, el cofre te sale gratis.</p>
+          <div class="ds-buy reveal">
+            <span class="price-xl mono">65 €</span>
+            <button type="button" class="btn btn-gold" data-add="discovery:set" data-i18n="ds.add">Añadir el Discovery Set</button>
+          </div>
+          <p class="proof reveal" data-i18n="ds.proof">El bono llega impreso dentro del cofre y vale 12 meses.</p>
+        </div>
+        <figure class="ds-media reveal">
+          <img src="assets/img/discovery-set.webp?v=20261106" alt="Cofre negro abierto con cuatro viales de vidrio de 5 ml con perfume ámbar, verde, plateado y rojizo y tapones de latón" width="1600" height="1100" loading="lazy" decoding="async" data-i18n-attr="alt:ds.alt">
+        </figure>
+      </div>
+      <div class="wrap">
+        <ol class="ritual">
+          <li class="reveal"><span class="mono" data-i18n="ds.d1">Día 1</span><b>Nocturne d'Or</b><p data-i18n="ds.d1t">Al atardecer, en la muñeca y detrás de la oreja.</p></li>
+          <li class="reveal"><span class="mono" data-i18n="ds.d2">Día 2</span><b>Sylva Obscura</b><p data-i18n="ds.d2t">Por la mañana, sobre una prenda de lana.</p></li>
+          <li class="reveal"><span class="mono" data-i18n="ds.d3">Día 3</span><b>Sel d'Argent</b><p data-i18n="ds.d3t">Después de la ducha, con la piel todavía húmeda.</p></li>
+          <li class="reveal"><span class="mono" data-i18n="ds.d4">Día 4</span><b>Fumée Céleste</b><p data-i18n="ds.d4t">De noche, una sola pulverización en el cuello.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 8. EL ATELIER ============ -->
+    <section class="atelier" id="atelier" aria-labelledby="at-title">
+      <figure class="at-media">
+        <img src="assets/img/atelier-alambique.webp?v=20261106" alt="Alambique de cobre martillado con capitel en forma de cebolla, cuello de cisne y condensador con aros de latón, iluminado por una ventana cálida" width="1600" height="1000" loading="lazy" decoding="async" data-i18n-attr="alt:at.alt">
+      </figure>
+      <div class="wrap at-copy">
+        <h2 class="h2 reveal" id="at-title" data-i18n="at.title">Cobre del siglo XIX, moléculas de <em>hoy</em>.</h2>
+        <p class="reveal" data-i18n="at.p1">Destilamos en Grasse, en un alambique de cobre martillado de 1890, materias que llegan de Calabria, Omán, Haití y Madagascar. En el estudio de Madrid las combinamos con moléculas que no existían hace veinte años: un ámbar gris de origen vegetal y una geosmina que huele a tierra mojada.</p>
+        <p class="reveal" data-i18n="at.p2">Cada fórmula pasa por unas cuarenta versiones antes de tener número de lote.</p>
+        <dl class="at-coords mono reveal">
+          <div><dt>Grasse</dt><dd>43.6584° N · 6.9225° E</dd></div>
+          <div><dt>Madrid</dt><dd>40.4258° N · 3.6862° O</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ 9. RESEÑAS (papel) ============ -->
+    <section class="resenas paper" aria-labelledby="rs-title">
+      <div class="wrap">
+        <h2 class="h3 reveal" id="rs-title" data-i18n="rs.title">Lo que nos escriben</h2>
+        <div class="rs-grid">
+          <figure class="rs rs-main reveal">
+            <blockquote data-i18n="rs.q1">Lo compré para una boda en octubre y a las dos de la madrugada todavía olía a incienso y cuero. Al día siguiente la bufanda seguía oliendo igual.</blockquote>
+            <figcaption><b>Lucía Ferrer</b> · Valencia · <em>Nocturne d'Or</em></figcaption>
+          </figure>
+          <figure class="rs reveal">
+            <blockquote data-i18n="rs.q2">Probé la muestra de 2 ml antes de abrir el frasco, como recomiendan. Sylva Obscura huele de verdad a pinar después de llover; mi pareja lo reconoció a la primera.</blockquote>
+            <figcaption><b>Javier Ortún</b> · Huesca · <em>Sylva Obscura</em></figcaption>
+          </figure>
+          <figure class="rs reveal">
+            <blockquote data-i18n="rs.q3">Pedí el Discovery Set dudando entre dos y acabé con un tercero, Sel d'Argent. El bono de 65 € se descontó solo al pagar.</blockquote>
+            <figcaption><b>Claire Dumas</b> · Biarritz · <em>Sel d'Argent</em></figcaption>
+          </figure>
+        </div>
+        <p class="rs-note mono" data-i18n="rs.note">Reseñas de ejemplo dentro de un proyecto conceptual.</p>
+      </div>
+    </section>
+
+    <!-- ============ 10. DIARIO ============ -->
+    <section class="diario" id="diario" aria-labelledby="di-title">
+      <div class="wrap">
+        <h2 class="h2 reveal" id="di-title" data-i18n="di.title">Diario</h2>
+        <div class="di-grid">
+          <article class="post post-main reveal">
+            <button type="button" class="post-link" data-read="incienso">
+              <img src="assets/img/diario-incienso.webp?v=20261106" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="post-meta mono" data-i18n="di.p1.meta">Materias · 4 min · 12 sep 2026</span>
+              <span class="post-title" data-i18n="di.p1.title">Las lágrimas de Omán: así se recoge el incienso</span>
+              <span class="post-ex" data-i18n="di.p1.ex">De un árbol retorcido de Dhofar al corazón de Nocturne d'Or, en tres semanas de resina y una destilación.</span>
+            </button>
+          </article>
+          <article class="post reveal">
+            <button type="button" class="post-link" data-read="alambique">
+              <img src="assets/img/diario-cobre.webp?v=20261106" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="post-meta mono" data-i18n="di.p2.meta">Oficio · 5 min · 3 oct 2026</span>
+              <span class="post-title" data-i18n="di.p2.title">Un alambique de 1890: lo que el cobre hace por una planta</span>
+              <span class="post-ex" data-i18n="di.p2.ex">Vapor, cobre martillado y tres toneladas de pétalos por kilo de aceite.</span>
+            </button>
+          </article>
+          <article class="post reveal">
+            <button type="button" class="post-link" data-read="extrait">
+              <img src="assets/img/diario-atomizador.webp?v=20261106" alt="" width="1600" height="1000" loading="lazy" decoding="async">
+              <span class="post-meta mono" data-i18n="di.p3.meta">Ritual · 3 min · 21 oct 2026</span>
+              <span class="post-title" data-i18n="di.p3.title">Cómo llevar un extrait: menos pulverizaciones, más horas</span>
+              <span class="post-ex" data-i18n="di.p3.ex">Dónde ponerlo, por qué no frotar las muñecas y qué hacer con una bufanda.</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11. PREGUNTAS FRECUENTES (papel) ============ -->
+    <section class="faq paper" id="preguntas" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <h2 class="h2 reveal" id="faq-title" data-i18n="faq.title">Antes de <em>pedir</em></h2>
+        <div class="faq-list">
+          <details class="reveal"><summary data-i18n="faq.q1">¿Cuánto tarda el envío y cuánto cuesta?</summary><p data-i18n="faq.a1">Península: de 24 a 72 h laborables por 4,90 €, gratis a partir de 120 €. Baleares: de 3 a 5 días. Canarias, Ceuta y Melilla: de 5 a 8 días, con posibles tasas de aduana. Europa: de 3 a 6 días por 12,90 €. Compensamos las emisiones de cada paquete, así que todos los envíos son neutros en carbono.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q2">¿Puedo devolver un perfume?</summary><p data-i18n="faq.a2">Sí, durante 30 días, siempre que el frasco de 100 ml siga precintado. Por eso cada pedido incluye una muestra de 2 ml: la pruebas primero y decides después.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q3">¿Qué diferencia hay entre extrait y eau de parfum?</summary><p data-i18n="faq.a3">La concentración de aceites. Nuestros extraits llevan un 30 y un 32 %, la eau de parfum intense un 24 % y la eau de parfum un 20 %. A más concentración, menos pulverizaciones y más horas en la piel.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q4">¿Cuánto dura en la piel?</summary><p data-i18n="faq.a4">Depende de tu piel y del clima. Como referencia: Nocturne d'Or y Fumée Céleste, de 10 a 12 h; Sylva Obscura, de 8 a 10 h; Sel d'Argent, de 6 a 8 h. En la lana duran bastante más.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q5">¿Cómo funciona el bono del Discovery Set?</summary><p data-i18n="faq.a5">El cofre cuesta 65 € e incluye un código de 65 € para tu primer frasco de 100 ml, válido 12 meses. Si compras un frasco, el cofre te habrá salido gratis.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q6">¿Puedo enviarlo como regalo?</summary><p data-i18n="faq.a6">Sí. Todos los pedidos salen en caja rígida negra con papel algodón. Puedes añadir una nota escrita a mano y pedir que el precio no aparezca en el paquete.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q7">¿Llevan alérgenos?</summary><p data-i18n="faq.a7">Como cualquier perfume, contienen alérgenos naturales (por ejemplo, linalool o limonene en la bergamota), indicados en la caja según la normativa europea. Seguimos las recomendaciones IFRA. Si tienes la piel sensible, prueba antes la muestra en el antebrazo.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q8">¿Puedo olerlos en persona?</summary><p data-i18n="faq.a8">En la tienda de Calle de Claudio Coello 48, en Madrid, de lunes a sábado de 11:00 a 20:30. No hace falta cita.</p></details>
+          <details class="reveal"><summary data-i18n="faq.q9">¿Es una tienda real?</summary><p data-i18n="faq.a9">No. AETHERIA Parfums es un proyecto conceptual de diseño web. Los perfumes, precios, reseñas y datos de contacto son ficticios, y el carrito no realiza ningún cobro.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 12. LLAMADA FINAL ============ -->
+    <section class="final" aria-labelledby="final-title">
+      <div class="final-media" aria-hidden="true"></div>
+      <div class="wrap final-copy">
+        <h2 class="h2 reveal" id="final-title" data-i18n="final.title">Pruébalo antes de <em>abrirlo</em>.</h2>
+        <p class="reveal" data-i18n="final.text">El frasco de 100 ml llega precintado y con una muestra de 2 ml. Si después de un día no es para ti, lo devuelves sin abrir.</p>
+        <div class="final-cta reveal">
+          <button type="button" class="btn btn-gold" data-add="nocturne:100" data-i18n="final.add">Añadir Nocturne d'Or · 265 €</button>
+          <a class="btn-link" href="#discovery" data-i18n="final.alt">o empieza por el Discovery Set · 65 €</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div class="f-brand">
+        <span class="brand-word">AETHERIA</span>
+        <p data-i18n="f.slogan">La memoria líquida del tiempo.</p>
+        <p class="mono f-sub">Haute Parfumerie Botanique &amp; Alchimie</p>
+      </div>
+      <div>
+        <h2 class="f-h mono" data-i18n="f.store">Tienda</h2>
+        <address>
+          <span>Calle de Claudio Coello 48</span>
+          <span data-i18n="f.barrio">Barrio de Salamanca, 28001 Madrid</span>
+          <span data-i18n="f.hours">Lunes a sábado, de 11:00 a 20:30</span>
+          <span class="mono">+34 910 88 45 12</span>
+          <span class="mono">concierge@aetheriaparfums.com</span>
+        </address>
+      </div>
+      <div>
+        <h2 class="f-h mono" data-i18n="f.promise">Garantías</h2>
+        <ul>
+          <li data-i18n="f.g1">Envío neutro en carbono</li>
+          <li data-i18n="f.g2">Muestra de 2 ml en cada pedido</li>
+          <li data-i18n="f.g3">30 días para devolver el frasco precintado</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="f-h mono" data-i18n="f.legal">Legal</h2>
+        <ul>
+          <li><a href="legal.html#aviso" data-i18n="f.l1">Aviso legal</a></li>
+          <li><a href="legal.html#privacidad" data-i18n="f.l2">Privacidad</a></li>
+          <li><a href="legal.html#condiciones" data-i18n="f.l3">Condiciones de venta</a></li>
+          <li><a href="legal.html#cookies" data-i18n="f.l4">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap f-bottom">
+      <p class="f-concept" data-i18n="f.concept">Proyecto conceptual de diseño. AETHERIA Parfums no es una marca real: los productos, precios, reseñas y datos de contacto son ficticios y no se realiza ninguna venta. Frascos, piedras e ingredientes modelados y renderizados en 3D con Blender.</p>
+      <p class="mono">© 2026 AETHERIA Parfums</p>
+    </div>
+  </footer>
+
+  <!-- Pedido (carrito) -->
+  <dialog class="drawer" data-cart aria-labelledby="cart-title">
+    <div class="drawer-inner">
+      <header class="drawer-head">
+        <h2 id="cart-title" class="h3" data-i18n="cart.title">Tu pedido</h2>
+        <button type="button" class="x" data-close aria-label="Cerrar" data-i18n-attr="aria-label:ui.close"><span aria-hidden="true"></span></button>
+      </header>
+      <div class="drawer-body" data-cart-body></div>
+      <footer class="drawer-foot" data-cart-foot></footer>
+    </div>
+  </dialog>
+
+  <!-- Ficha de producto -->
+  <dialog class="sheet" data-sheet-dialog aria-labelledby="sheet-title">
+    <div class="sheet-inner" data-sheet-body></div>
+  </dialog>
+
+  <!-- Lector del Diario -->
+  <dialog class="reader" data-reader aria-labelledby="reader-title">
+    <div class="reader-inner" data-reader-body></div>
+  </dialog>
+
+  <div class="toast mono" data-toast role="status" aria-live="polite"></div>
+
+  <script defer src="assets/js/data.js?v=20261106"></script>
+  <script defer src="assets/js/i18n.js?v=20261106b"></script>
+  <script defer src="assets/js/main.js?v=20261106b"></script>
+  <script defer src="assets/lib/three.min.js?v=r147"></script>
+  <script defer src="assets/lib/GLTFLoader.js?v=r147"></script>
+  <script defer src="assets/lib/Reflector.js?v=r147"></script>
+  <script defer src="assets/js/viewer3d.js?v=20261106b"></script>
+</body>
+</html>
